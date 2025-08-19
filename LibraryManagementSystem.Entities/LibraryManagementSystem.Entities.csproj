@@ -41,9 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cerime.cs" />
+    <Compile Include="Icare.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="Istifadechi.cs" />
+    <Compile Include="Kateqoriya.cs" />
     <Compile Include="Kitab.cs" />
+    <Compile Include="Muellif.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rol.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,9 +10,13 @@ namespace LibraryManagementSystem.Entities
     {
         public int KitabID { get; set; } // Primary Key
         public string KitabAdi { get; set; }
-        public string Muellif { get; set; }
-        public bool StokdaVarmi { get; set; } // Indicates if the book is available
-        public string Qeyd { get; set; } // Description of the book
+        public int MuellifID { get; set; }
+        public virtual Muellif Muellif { get; set; } // Kitab class-i ile Muellif class-i arasında elaqe
+        public int KateqoriyaID { get; set; }
+        //public virtual Kateqoriya Kateqoriya { get; set; } // Kitab class-i ile Kateqoriya class-i arasında elaqe
+        public decimal IcareQiymeti { get; set; } 
+        public bool StokdaVarmi { get; set; } 
+        public string Qeyd { get; set; } 
         
     }
 }
