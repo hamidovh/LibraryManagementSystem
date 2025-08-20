@@ -56,9 +56,6 @@
     <Compile Include="Cerime.cs">
       <DependentUpon>LibraryManagementSystemDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="C__MigrationHistory.cs">
-      <DependentUpon>LibraryManagementSystemDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Icare.cs">
       <DependentUpon>LibraryManagementSystemDB.tt</DependentUpon>
     </Compile>

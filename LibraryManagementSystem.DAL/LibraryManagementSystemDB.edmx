@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="DatabaseContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Cerime">
           <Key>
             <PropertyRef Name="ID" />
@@ -188,7 +178,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DatabaseContextStoreContainer">
-          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cerime" EntityType="Self.Cerime" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Icare" EntityType="Self.Icare" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Istifadechi" EntityType="Self.Istifadechi" Schema="dbo" store:Type="Tables" />
@@ -230,16 +219,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
         <EntityType Name="Cerime">
           <Key>
             <PropertyRef Name="ID" />
@@ -427,7 +406,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="LibraryManagementSystemEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="Cerimeler" EntityType="Self.Cerime" />
           <EntitySet Name="Icareler" EntityType="Self.Icare" />
           <EntitySet Name="Istifadechiler" EntityType="Self.Istifadechi" />
@@ -470,16 +448,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DatabaseContextStoreContainer" CdmEntityContainer="LibraryManagementSystemEntities">
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="DatabaseContext.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cerimeler">
             <EntityTypeMapping TypeName="DatabaseContext.Cerime">
               <MappingFragment StoreEntitySet="Cerime">

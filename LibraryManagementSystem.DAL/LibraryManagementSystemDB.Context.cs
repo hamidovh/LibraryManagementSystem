@@ -25,7 +25,6 @@ namespace LibraryManagementSystem.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Cerime> Cerimeler { get; set; }
         public virtual DbSet<Icare> Icareler { get; set; }
         public virtual DbSet<Istifadechi> Istifadechiler { get; set; }

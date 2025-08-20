@@ -12,7 +12,6 @@
 		<EntityTypeShape EntityType="DatabaseContext.Rol" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
 		<EntityTypeShape EntityType="DatabaseContext.Icare" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
 		<EntityTypeShape EntityType="DatabaseContext.Cerime" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
-		<EntityTypeShape EntityType="DatabaseContext.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
 		<AssociationConnector Association="DatabaseContext.FK_dbo_Cerime_dbo_Icare_IcareID" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseContext.FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseContext.FK_dbo_Icare_dbo_Istifadechi_IstifadechiID" ManuallyRouted="false" />
