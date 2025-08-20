@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementSystem.Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementSystem.WinFormsApp", "LibraryManagementSystem.WinFormsApp\LibraryManagementSystem.WinFormsApp.csproj", "{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementSystem.DAL", "LibraryManagementSystem.DAL\LibraryManagementSystem.DAL.csproj", "{DF243BCE-7533-45FF-A7D3-4F44A2F3309F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementSystem.BL", "LibraryManagementSystem.BL\LibraryManagementSystem.BL.csproj", "{B8E3680C-47D3-421A-B596-F0E8FDE7586E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF243BCE-7533-45FF-A7D3-4F44A2F3309F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF243BCE-7533-45FF-A7D3-4F44A2F3309F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF243BCE-7533-45FF-A7D3-4F44A2F3309F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF243BCE-7533-45FF-A7D3-4F44A2F3309F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E3680C-47D3-421A-B596-F0E8FDE7586E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E3680C-47D3-421A-B596-F0E8FDE7586E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E3680C-47D3-421A-B596-F0E8FDE7586E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E3680C-47D3-421A-B596-F0E8FDE7586E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

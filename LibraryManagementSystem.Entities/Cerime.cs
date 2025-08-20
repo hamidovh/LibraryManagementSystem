@@ -8,7 +8,7 @@ namespace LibraryManagementSystem.Entities
         //public int CerimeID { get; set; } // Primary Key
         public decimal Mebleg { get; set; } 
         public bool Odenilibmi { get; set; } 
-        public DateTime CerimeTarix { get; set; } // Cerimenin yazildığı tarix
+        public DateTime CerimeTarixi { get; set; } // Cerimenin yazildığı tarix
         public DateTime OdenmeTarixi { get; set; } // Cerimenin öənildiyi tarix (ödənilənədək null ola bilər)
         public string Sebeb { get; set; } // Cərimənin səbəbi, məsələn "Gecikmə" və ya "İtirilmiş kitab"
         public int IstifadechiID { get; set; } // Foreign Key to Istifadechi

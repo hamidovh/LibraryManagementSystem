@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cerime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mebleg" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Odenilibmi" Type="bit" Nullable="false" />
+          <Property Name="OdenmeTarixi" Type="datetime" Nullable="false" />
+          <Property Name="Sebeb" Type="nvarchar(max)" />
+          <Property Name="IstifadechiID" Type="int" Nullable="false" />
+          <Property Name="IcareID" Type="int" Nullable="false" />
+          <Property Name="CerimeTarixi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Icare">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IcareQiymeti" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IcareTarixi" Type="datetime" Nullable="false" />
+          <Property Name="SonTarix" Type="datetime" Nullable="false" />
+          <Property Name="QaytarilmaTarixi" Type="datetime" Nullable="false" />
+          <Property Name="Qaytarilibmi" Type="bit" Nullable="false" />
+          <Property Name="Statusu" Type="nvarchar(max)" />
+          <Property Name="IstifadechiID" Type="int" Nullable="false" />
+          <Property Name="KitabID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Istifadechi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="nvarchar(max)" />
+          <Property Name="Soyadi" Type="nvarchar(max)" />
+          <Property Name="DoghumTarixi" Type="datetime" Nullable="false" />
+          <Property Name="Cins" Type="nvarchar(max)" />
+          <Property Name="FinKod" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="TelefonNo" Type="nvarchar(max)" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="IstifadechiAdi" Type="nvarchar(max)" />
+          <Property Name="Shifre" Type="nvarchar(max)" />
+          <Property Name="Aktivdirmi" Type="bit" Nullable="false" />
+          <Property Name="QeydiyyatTarixi" Type="datetime" Nullable="false" />
+          <Property Name="RolID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kateqoriya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KateqoriyaAdi" Type="nvarchar(max)" />
+          <Property Name="KateqoriyaTesviri" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Kitab">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KitabAdi" Type="nvarchar(max)" />
+          <Property Name="MuellifID" Type="int" Nullable="false" />
+          <Property Name="KateqoriyaID" Type="int" Nullable="false" />
+          <Property Name="IcareQiymeti" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StokdaVarmi" Type="bit" Nullable="false" />
+          <Property Name="Qeyd" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Muellif">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MuellifAdi" Type="nvarchar(max)" />
+          <Property Name="MuellifSoyadi" Type="nvarchar(max)" />
+          <Property Name="MuellifinDoghumTarixi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolAdi" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_Cerime_dbo_Icare_IcareID">
+          <End Role="Icare" Type="Self.Icare" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cerime" Type="Self.Cerime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Icare">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cerime">
+              <PropertyRef Name="IcareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID">
+          <End Role="Istifadechi" Type="Self.Istifadechi" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cerime" Type="Self.Cerime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istifadechi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cerime">
+              <PropertyRef Name="IstifadechiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Icare_dbo_Istifadechi_IstifadechiID">
+          <End Role="Istifadechi" Type="Self.Istifadechi" Multiplicity="1" />
+          <End Role="Icare" Type="Self.Icare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istifadechi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Icare">
+              <PropertyRef Name="IstifadechiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Icare_dbo_Kitab_KitabID">
+          <End Role="Kitab" Type="Self.Kitab" Multiplicity="1" />
+          <End Role="Icare" Type="Self.Icare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitab">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Icare">
+              <PropertyRef Name="KitabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Istifadechi_dbo_Rol_RolID">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Istifadechi" Type="Self.Istifadechi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Istifadechi">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Kitab_dbo_Kateqoriya_KateqoriyaID">
+          <End Role="Kateqoriya" Type="Self.Kateqoriya" Multiplicity="1" />
+          <End Role="Kitab" Type="Self.Kitab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kateqoriya">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kitab">
+              <PropertyRef Name="KateqoriyaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Kitab_dbo_Muellif_MuellifID">
+          <End Role="Muellif" Type="Self.Muellif" Multiplicity="1" />
+          <End Role="Kitab" Type="Self.Kitab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muellif">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kitab">
+              <PropertyRef Name="MuellifID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseContextStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cerime" EntityType="Self.Cerime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Icare" EntityType="Self.Icare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Istifadechi" EntityType="Self.Istifadechi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kateqoriya" EntityType="Self.Kateqoriya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kitab" EntityType="Self.Kitab" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Muellif" EntityType="Self.Muellif" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Cerime_dbo_Icare_IcareID" Association="Self.FK_dbo_Cerime_dbo_Icare_IcareID">
+            <End Role="Icare" EntitySet="Icare" />
+            <End Role="Cerime" EntitySet="Cerime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID" Association="Self.FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID">
+            <End Role="Istifadechi" EntitySet="Istifadechi" />
+            <End Role="Cerime" EntitySet="Cerime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Icare_dbo_Istifadechi_IstifadechiID" Association="Self.FK_dbo_Icare_dbo_Istifadechi_IstifadechiID">
+            <End Role="Istifadechi" EntitySet="Istifadechi" />
+            <End Role="Icare" EntitySet="Icare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Icare_dbo_Kitab_KitabID" Association="Self.FK_dbo_Icare_dbo_Kitab_KitabID">
+            <End Role="Kitab" EntitySet="Kitab" />
+            <End Role="Icare" EntitySet="Icare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Istifadechi_dbo_Rol_RolID" Association="Self.FK_dbo_Istifadechi_dbo_Rol_RolID">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Istifadechi" EntitySet="Istifadechi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Kitab_dbo_Kateqoriya_KateqoriyaID" Association="Self.FK_dbo_Kitab_dbo_Kateqoriya_KateqoriyaID">
+            <End Role="Kateqoriya" EntitySet="Kateqoriya" />
+            <End Role="Kitab" EntitySet="Kitab" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Kitab_dbo_Muellif_MuellifID" Association="Self.FK_dbo_Kitab_dbo_Muellif_MuellifID">
+            <End Role="Muellif" EntitySet="Muellif" />
+            <End Role="Kitab" EntitySet="Kitab" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cerime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mebleg" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Odenilibmi" Type="Boolean" Nullable="false" />
+          <Property Name="OdenmeTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sebeb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IstifadechiID" Type="Int32" Nullable="false" />
+          <Property Name="IcareID" Type="Int32" Nullable="false" />
+          <Property Name="CerimeTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Icare" Relationship="Self.FK_dbo_Cerime_dbo_Icare_IcareID" FromRole="Cerime" ToRole="Icare" />
+          <NavigationProperty Name="Istifadechi" Relationship="Self.FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID" FromRole="Cerime" ToRole="Istifadechi" />
+        </EntityType>
+        <EntityType Name="Icare">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IcareQiymeti" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IcareTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SonTarix" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="QaytarilmaTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Qaytarilibmi" Type="Boolean" Nullable="false" />
+          <Property Name="Statusu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IstifadechiID" Type="Int32" Nullable="false" />
+          <Property Name="KitabID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cerimeler" Relationship="Self.FK_dbo_Cerime_dbo_Icare_IcareID" FromRole="Icare" ToRole="Cerime" />
+          <NavigationProperty Name="Istifadechi" Relationship="Self.FK_dbo_Icare_dbo_Istifadechi_IstifadechiID" FromRole="Icare" ToRole="Istifadechi" />
+          <NavigationProperty Name="Kitab" Relationship="Self.FK_dbo_Icare_dbo_Kitab_KitabID" FromRole="Icare" ToRole="Kitab" />
+        </EntityType>
+        <EntityType Name="Istifadechi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Soyadi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DoghumTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Cins" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FinKod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TelefonNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IstifadechiAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Shifre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aktivdirmi" Type="Boolean" Nullable="false" />
+          <Property Name="QeydiyyatTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RolID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cerimeler" Relationship="Self.FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID" FromRole="Istifadechi" ToRole="Cerime" />
+          <NavigationProperty Name="Icareler" Relationship="Self.FK_dbo_Icare_dbo_Istifadechi_IstifadechiID" FromRole="Istifadechi" ToRole="Icare" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_dbo_Istifadechi_dbo_Rol_RolID" FromRole="Istifadechi" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Kateqoriya">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KateqoriyaAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KateqoriyaTesviri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kitablar" Relationship="Self.FK_dbo_Kitab_dbo_Kateqoriya_KateqoriyaID" FromRole="Kateqoriya" ToRole="Kitab" />
+        </EntityType>
+        <EntityType Name="Kitab">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KitabAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MuellifID" Type="Int32" Nullable="false" />
+          <Property Name="KateqoriyaID" Type="Int32" Nullable="false" />
+          <Property Name="IcareQiymeti" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StokdaVarmi" Type="Boolean" Nullable="false" />
+          <Property Name="Qeyd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Icareler" Relationship="Self.FK_dbo_Icare_dbo_Kitab_KitabID" FromRole="Kitab" ToRole="Icare" />
+          <NavigationProperty Name="Kateqoriya" Relationship="Self.FK_dbo_Kitab_dbo_Kateqoriya_KateqoriyaID" FromRole="Kitab" ToRole="Kateqoriya" />
+          <NavigationProperty Name="Muellif" Relationship="Self.FK_dbo_Kitab_dbo_Muellif_MuellifID" FromRole="Kitab" ToRole="Muellif" />
+        </EntityType>
+        <EntityType Name="Muellif">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MuellifAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MuellifSoyadi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MuellifinDoghumTarixi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Kitablar" Relationship="Self.FK_dbo_Kitab_dbo_Muellif_MuellifID" FromRole="Muellif" ToRole="Kitab" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Istifadechiler" Relationship="Self.FK_dbo_Istifadechi_dbo_Rol_RolID" FromRole="Rol" ToRole="Istifadechi" />
+        </EntityType>
+        <Association Name="FK_dbo_Cerime_dbo_Icare_IcareID">
+          <End Role="Icare" Type="Self.Icare" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cerime" Type="Self.Cerime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Icare">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cerime">
+              <PropertyRef Name="IcareID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID">
+          <End Role="Istifadechi" Type="Self.Istifadechi" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cerime" Type="Self.Cerime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istifadechi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cerime">
+              <PropertyRef Name="IstifadechiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Icare_dbo_Istifadechi_IstifadechiID">
+          <End Role="Istifadechi" Type="Self.Istifadechi" Multiplicity="1" />
+          <End Role="Icare" Type="Self.Icare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istifadechi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Icare">
+              <PropertyRef Name="IstifadechiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Icare_dbo_Kitab_KitabID">
+          <End Role="Kitab" Type="Self.Kitab" Multiplicity="1" />
+          <End Role="Icare" Type="Self.Icare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitab">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Icare">
+              <PropertyRef Name="KitabID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Istifadechi_dbo_Rol_RolID">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Istifadechi" Type="Self.Istifadechi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Istifadechi">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Kitab_dbo_Kateqoriya_KateqoriyaID">
+          <End Role="Kateqoriya" Type="Self.Kateqoriya" Multiplicity="1" />
+          <End Role="Kitab" Type="Self.Kitab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kateqoriya">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kitab">
+              <PropertyRef Name="KateqoriyaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Kitab_dbo_Muellif_MuellifID">
+          <End Role="Muellif" Type="Self.Muellif" Multiplicity="1" />
+          <End Role="Kitab" Type="Self.Kitab" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Muellif">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Kitab">
+              <PropertyRef Name="MuellifID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibraryManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Cerimeler" EntityType="Self.Cerime" />
+          <EntitySet Name="Icareler" EntityType="Self.Icare" />
+          <EntitySet Name="Istifadechiler" EntityType="Self.Istifadechi" />
+          <EntitySet Name="Kateqoriyalar" EntityType="Self.Kateqoriya" />
+          <EntitySet Name="Kitablar" EntityType="Self.Kitab" />
+          <EntitySet Name="Muellifler" EntityType="Self.Muellif" />
+          <EntitySet Name="Rollar" EntityType="Self.Rol" />
+          <AssociationSet Name="FK_dbo_Cerime_dbo_Icare_IcareID" Association="Self.FK_dbo_Cerime_dbo_Icare_IcareID">
+            <End Role="Icare" EntitySet="Icareler" />
+            <End Role="Cerime" EntitySet="Cerimeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID" Association="Self.FK_dbo_Cerime_dbo_Istifadechi_IstifadechiID">
+            <End Role="Istifadechi" EntitySet="Istifadechiler" />
+            <End Role="Cerime" EntitySet="Cerimeler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Icare_dbo_Istifadechi_IstifadechiID" Association="Self.FK_dbo_Icare_dbo_Istifadechi_IstifadechiID">
+            <End Role="Istifadechi" EntitySet="Istifadechiler" />
+            <End Role="Icare" EntitySet="Icareler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Icare_dbo_Kitab_KitabID" Association="Self.FK_dbo_Icare_dbo_Kitab_KitabID">
+            <End Role="Kitab" EntitySet="Kitablar" />
+            <End Role="Icare" EntitySet="Icareler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Istifadechi_dbo_Rol_RolID" Association="Self.FK_dbo_Istifadechi_dbo_Rol_RolID">
+            <End Role="Rol" EntitySet="Rollar" />
+            <End Role="Istifadechi" EntitySet="Istifadechiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Kitab_dbo_Kateqoriya_KateqoriyaID" Association="Self.FK_dbo_Kitab_dbo_Kateqoriya_KateqoriyaID">
+            <End Role="Kateqoriya" EntitySet="Kateqoriyalar" />
+            <End Role="Kitab" EntitySet="Kitablar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Kitab_dbo_Muellif_MuellifID" Association="Self.FK_dbo_Kitab_dbo_Muellif_MuellifID">
+            <End Role="Muellif" EntitySet="Muellifler" />
+            <End Role="Kitab" EntitySet="Kitablar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseContextStoreContainer" CdmEntityContainer="LibraryManagementSystemEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="DatabaseContext.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cerimeler">
+            <EntityTypeMapping TypeName="DatabaseContext.Cerime">
+              <MappingFragment StoreEntitySet="Cerime">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Mebleg" ColumnName="Mebleg" />
+                <ScalarProperty Name="Odenilibmi" ColumnName="Odenilibmi" />
+                <ScalarProperty Name="OdenmeTarixi" ColumnName="OdenmeTarixi" />
+                <ScalarProperty Name="Sebeb" ColumnName="Sebeb" />
+                <ScalarProperty Name="IstifadechiID" ColumnName="IstifadechiID" />
+                <ScalarProperty Name="IcareID" ColumnName="IcareID" />
+                <ScalarProperty Name="CerimeTarixi" ColumnName="CerimeTarixi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Icareler">
+            <EntityTypeMapping TypeName="DatabaseContext.Icare">
+              <MappingFragment StoreEntitySet="Icare">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IcareQiymeti" ColumnName="IcareQiymeti" />
+                <ScalarProperty Name="IcareTarixi" ColumnName="IcareTarixi" />
+                <ScalarProperty Name="SonTarix" ColumnName="SonTarix" />
+                <ScalarProperty Name="QaytarilmaTarixi" ColumnName="QaytarilmaTarixi" />
+                <ScalarProperty Name="Qaytarilibmi" ColumnName="Qaytarilibmi" />
+                <ScalarProperty Name="Statusu" ColumnName="Statusu" />
+                <ScalarProperty Name="IstifadechiID" ColumnName="IstifadechiID" />
+                <ScalarProperty Name="KitabID" ColumnName="KitabID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Istifadechiler">
+            <EntityTypeMapping TypeName="DatabaseContext.Istifadechi">
+              <MappingFragment StoreEntitySet="Istifadechi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="DoghumTarixi" ColumnName="DoghumTarixi" />
+                <ScalarProperty Name="Cins" ColumnName="Cins" />
+                <ScalarProperty Name="FinKod" ColumnName="FinKod" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TelefonNo" ColumnName="TelefonNo" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="IstifadechiAdi" ColumnName="IstifadechiAdi" />
+                <ScalarProperty Name="Shifre" ColumnName="Shifre" />
+                <ScalarProperty Name="Aktivdirmi" ColumnName="Aktivdirmi" />
+                <ScalarProperty Name="QeydiyyatTarixi" ColumnName="QeydiyyatTarixi" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kateqoriyalar">
+            <EntityTypeMapping TypeName="DatabaseContext.Kateqoriya">
+              <MappingFragment StoreEntitySet="Kateqoriya">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KateqoriyaAdi" ColumnName="KateqoriyaAdi" />
+                <ScalarProperty Name="KateqoriyaTesviri" ColumnName="KateqoriyaTesviri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kitablar">
+            <EntityTypeMapping TypeName="DatabaseContext.Kitab">
+              <MappingFragment StoreEntitySet="Kitab">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KitabAdi" ColumnName="KitabAdi" />
+                <ScalarProperty Name="MuellifID" ColumnName="MuellifID" />
+                <ScalarProperty Name="KateqoriyaID" ColumnName="KateqoriyaID" />
+                <ScalarProperty Name="IcareQiymeti" ColumnName="IcareQiymeti" />
+                <ScalarProperty Name="StokdaVarmi" ColumnName="StokdaVarmi" />
+                <ScalarProperty Name="Qeyd" ColumnName="Qeyd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Muellifler">
+            <EntityTypeMapping TypeName="DatabaseContext.Muellif">
+              <MappingFragment StoreEntitySet="Muellif">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MuellifAdi" ColumnName="MuellifAdi" />
+                <ScalarProperty Name="MuellifSoyadi" ColumnName="MuellifSoyadi" />
+                <ScalarProperty Name="MuellifinDoghumTarixi" ColumnName="MuellifinDoghumTarixi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rollar">
+            <EntityTypeMapping TypeName="DatabaseContext.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RolAdi" ColumnName="RolAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
