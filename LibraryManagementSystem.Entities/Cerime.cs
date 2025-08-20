@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Entities
 {
-    public class Cerime
+    public class Cerime : IEntity
     {
-        public int CerimeID { get; set; } // Primary Key
+        public int ID { get; set; } // Primary Key 
+        //public int CerimeID { get; set; } // Primary Key
         public decimal Mebleg { get; set; } 
         public bool Odenilibmi { get; set; } 
         public DateTime CerimeTarix { get; set; } // Cerimenin yazildığı tarix

@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.Entities
 {
-    public class Istifadechi
+    public class Istifadechi : IEntity
     {
         public int ID { get; set; } // Primary Key
+        //public int IstifadechiID { get; set; } // Primary Key
         public string Adi { get; set; }
         public string Soyadi { get; set; }
         public DateTime DoghumTarixi { get; set; }
+        public string Cins { get; set; } // K/Q
+        public string FinKod { get; set; } 
         public string Email { get; set; }
         public string TelefonNo { get; set; }
         public string Adres { get; set; }
@@ -19,7 +18,7 @@ namespace LibraryManagementSystem.Entities
         public string Shifre { get; set; }
         public bool Aktivdirmi { get; set; }
         public DateTime QeydiyyatTarixi { get; set; } // istifadechinin elavə olunma tarixidir.
-        public int RolID { get; set; }
+        public int RolID { get; set; } // Foreign Key to Rol
         public virtual Rol Rol { get; set; } // Istifadechi class-i ile Rol class-i arasında elaqe
     }
 }

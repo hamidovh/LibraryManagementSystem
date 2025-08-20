@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LibraryManagementSystem.Entities
+﻿namespace LibraryManagementSystem.Entities
 {
-    public class Rol
+    public class Rol : IEntity
     {
-        public int ID { get; set; }
+        public int ID { get; set; } // Primary Key
+        //public int RolID { get; set; } // Primary Key
         public string RolAdi { get; set; }
     }
 }

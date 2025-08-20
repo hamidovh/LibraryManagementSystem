@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36408.4 d17.14
+VisualStudioVersion = 17.14.36408.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementSystem.Entities", "LibraryManagementSystem.Entities\LibraryManagementSystem.Entities.csproj", "{C78B72EC-CFB4-444B-94C4-E1011A380CC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementSystem.WinFormsApp", "LibraryManagementSystem.WinFormsApp\LibraryManagementSystem.WinFormsApp.csproj", "{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C78B72EC-CFB4-444B-94C4-E1011A380CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C78B72EC-CFB4-444B-94C4-E1011A380CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C78B72EC-CFB4-444B-94C4-E1011A380CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73CF7FD7-DC63-4FA9-A0FB-AEBA5C5A0903}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
